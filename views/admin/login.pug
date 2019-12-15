@@ -8,7 +8,7 @@ html(lang='en')
 		link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', type='text/javascript')
 
-		title Hello, world!
+		title Login
 		link(rel="stylesheet", href="/admin/css/login.css")
 	body
 		if msg
@@ -17,8 +17,8 @@ html(lang='en')
 		.log-form
 			h2 Login to your account
 			form(method='POST' action="/users/login")
-				input(type='text', title='username', placeholder='username' name="username")
-				input(type='password', title='username', placeholder='password' name="password")
+				input(type='text', title='username', placeholder='username' name="username" required="")
+				input(type='password', placeholder='password' name="password" required="")
 				button.btn(type='submit') Login
 				a.forgot(href='#') Forgot Username?
 		// end log form
