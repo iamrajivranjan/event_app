@@ -52,3 +52,11 @@ Event
     - Creator
     - Venue
 ```
+## Schema
+MongoDb sectup:
+1. Install Mongodb using this link 
+[Install MongoDb](https://docs.mongodb.com/manual/installation/#mongodb-community-edition-installation-tutorials)
+2. Start Mongodb
+```bash
+sudo service mongod start
+```
