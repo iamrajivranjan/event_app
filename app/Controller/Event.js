@@ -93,7 +93,7 @@ exports.getEvents = async (req, res, next) => {
 		var items = await Event.findPublishEvent();
 
 		if (items) {
-            res.render('admin/event/list', { items: items,user: req.session.user})
+            res.render('index', { items: items})
             // res.send(items)
 		}
 	} catch (e) {
@@ -141,5 +141,16 @@ exports.viewEvent = async (req, res, next) => {
 	var item =  await Event.findByReference(req.params.reference)
 
 	res.render('admin/event/view', { item: item, user: req.session.user})
+
+}
+
+/**
+ *  Admin | View event admin
+ */
+exports.viewEventDetail = async (req, res, next) => {
+
+	var item =  await Event.findByReference(req.params.reference)
+
+	res.render('view_event', { item: item,})
 
 }

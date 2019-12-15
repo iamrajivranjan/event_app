@@ -6,13 +6,11 @@ var Event = require('../app/Controller/Event')
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', Event.getEvents);
 
 
 /* GET only published events */
-router.get('/events', Event.getEvents);
+router.get('/view/:reference', Event.viewEventDetail)
 
 
 module.exports = router;
