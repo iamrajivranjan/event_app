@@ -51,6 +51,10 @@ router.get('/add',isAuthenticated, Event.getAddEvent);
 
 router.post('/add',isAuthenticated, upload.single('cover'), Event.postAddEvent);
 
-router.get('/list',isAuthenticated, Event.getPublishEvent)
+router.get('/published',isAuthenticated, Event.getPublishEvent)
+
+router.get('/unpublished',isAuthenticated, Event.getUnpublishEvent)
+
+router.get('/view/:reference',isAuthenticated, Event.viewEvent)
 
 module.exports = router;

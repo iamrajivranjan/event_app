@@ -54,7 +54,7 @@ html
 						//- span.badge.badge-danger.navbar-badge abc
 						.dropdown-menu.dropdown-menu-lg.dropdown-menu-right
 							
-							a.dropdown-item.dropdown-footer(href='#') 
+							a.dropdown-item.dropdown-footer(href='/users/logout') 
 								i.far.fa-user(style="margin-right: 30px")
 								span Logout
 					
@@ -74,7 +74,7 @@ html
 						.image
 							img.img-circle.elevation-2(src='/admin/dist/img/user2-160x160.jpg', alt='User Image')
 						.info
-							a.d-block(href='#') USER HERRE
+							a.d-block(href='#')=user.username
 					// Sidebar Menu
 					nav.mt-2
 						ul.nav.nav-pills.nav-sidebar.flex-column(data-widget='treeview', role='menu', data-accordion='false')
@@ -97,13 +97,17 @@ html
 										i.right.fas.fa-angle-left
 								ul.nav.nav-treeview
 									li.nav-item
-										a.nav-link(href='/events/add')
+										a.nav-link(href='/admin/event/add')
 											i.far.fa-circle.nav-icon
 											p Add Event
 									li.nav-item
-										a.nav-link(href='/events/list')
+										a.nav-link(href='/admin/event/unpublished')
 											i.far.fa-circle.nav-icon
-											p List All Events
+											p List Unpublished
+									li.nav-item
+										a.nav-link(href='/admin/event/published')
+											i.far.fa-circle.nav-icon
+											p List Published
 
 							
 							li.nav-header LABELS

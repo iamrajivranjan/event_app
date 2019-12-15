@@ -8,7 +8,7 @@ var fs = require('fs')
  */
 exports.getAddEvent = async (req, res, next) => {
 	try {
-		res.render('admin/event/add',);
+		res.render('admin/event/add',{user: req.session.user});
 	} catch (e) {
 		console.log(e)
 	}
@@ -75,10 +75,10 @@ exports.postAddEvent = async (req, res, next) => {
 
 		)
         if (data) {
-            // res.redirect('/admin/event/add')
-            res.send("Saved To database")
+            res.render('admin/event/add' ,  {user: req.session.user, msg:"Event Saved Succesfully." })
+            // res.send("Saved To database")
 		} else {
-
+			res.render('admin/event/add' ,  {user: req.session.user, msg:"Something Went Wrong" })
 		}
 	} catch (e) {
 		console.log(e)
@@ -93,7 +93,7 @@ exports.getEvents = async (req, res, next) => {
 		var items = await Event.findPublishEvent();
 
 		if (items) {
-            res.render('admin/event/list', { items: items,})
+            res.render('admin/event/list', { items: items,user: req.session.user})
             // res.send(items)
 		}
 	} catch (e) {
@@ -109,7 +109,7 @@ exports.getPublishEvent = async (req, res, next) => {
 		var items = await Event.findPublishEvent();
 
 		if (items) {
-            res.render('admin/event/list', { items: items,})
+            res.render('admin/event/list', { items: items,user: req.session.user})
             // res.send(items)
 		}
 	} catch (e) {
@@ -125,10 +125,21 @@ exports.getUnpublishEvent = async (req, res, next) => {
 		var items = await Event.findUnpublishEvent();
 
 		if (items) {
-            // res.render('admin/event/list', { items: items,})
-            res.send(items)
+            res.render('admin/event/list', { items: items, user: req.session.user})
+            // res.send(items)
 		}
 	} catch (e) {
 		console.log(e)
 	}
+}
+
+/**
+ *  Admin | View event admin
+ */
+exports.viewEvent = async (req, res, next) => {
+
+	var item =  await Event.findByReference(req.params.reference)
+
+	res.render('admin/event/view', { item: item, user: req.session.user})
+
 }
