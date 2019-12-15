@@ -41,16 +41,16 @@ function isAuthenticated(req, res, next) {
     if (req.session.user)
         return next()
     else
-        return res.redirect('/admin/login')
+        return res.redirect('/users/login')
 }
 
 
 var Event = require('../../app/Controller/Event')
 
-router.get('/add', Event.getAddEvent);
+router.get('/add',isAuthenticated, Event.getAddEvent);
 
-router.post('/add',upload.single('cover'), Event.postAddEvent);
+router.post('/add',isAuthenticated, upload.single('cover'), Event.postAddEvent);
 
-router.get('/list', Event.getPublishEvent)
+router.get('/list',isAuthenticated, Event.getPublishEvent)
 
 module.exports = router;
